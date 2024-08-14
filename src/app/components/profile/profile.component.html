@@ -1,0 +1,120 @@
+<div class="container">
+    <div class="profile">
+        <img
+            src="{{
+                loggedInUser.profileImage
+                    ? loggedInUser.profileImage
+                    : defaultUserImage
+            }}"
+            alt="Profile Picture"
+        />
+        <div class="profile-details">
+            <h1>{{ loggedInUser.userName }}</h1>
+            <p>Email : {{ loggedInUser.userEmail }}</p>
+            <p>Name : {{ loggedInUser.fullName }}</p>
+            <div class="edit-and-share-profile">
+                <button
+                    class="profile-button"
+                    role="button"
+                    (click)="showEditForm()"
+                >
+                    Edit Profile
+                </button>
+                <button class="profile-button" role="button">
+                    Share Profile
+                </button>
+            </div>
+        </div>
+        <button class="logout btn btn-secondary" (click)="logout()">
+            Logout
+        </button>
+    </div>
+
+    <h4>Posts</h4>
+    <div class="gallery">
+        <div class="spinner" *ngIf="isSpinnerVisible">
+            <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div class="images" *ngFor="let post of posts">
+            <img
+                src="{{ post.imageLink }}"
+                alt="Image"
+                (click)="showPost(post)"
+            />
+        </div>
+    </div>
+</div>
+
+<div class="box-overlay" *ngIf="isEditProfileFormVisible">
+    <div class="box" (click)="$event.stopPropagation()">
+        <div class="header-and-profile">
+            <div class="profile-header">
+                <h2>profiles</h2>
+                <button class="close-btn" (click)="hideEditForm()">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="profile">
+                <form
+                    class="edit-profile-form"
+                    [formGroup]="editProfileForm"
+                    (ngSubmit)="
+                        editProfile(loggedInUser.key, editProfileForm.value)
+                    "
+                >
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input
+                            type="email"
+                            class="form-control"
+                            id="email"
+                            formControlName="userEmail"
+                            placeholder="Enter email"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="profileImage">Profile image</label>
+                        <input
+                            type="file"
+                            class="form-control"
+                            id="profileImage"
+                            formControlName="profileImage"
+                            placeholder="Choose file"
+                            (change)="onImageSelected($event)"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="fullName">Full name</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="fullName"
+                            formControlName="fullName"
+                            placeholder="Enter fullname"
+                        />
+                    </div>
+                    <button
+                        [disabled]="!editProfileForm.valid"
+                        type="submit"
+                        class="btn btn-primary mt-2"
+                    >
+                        Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="box-overlay" *ngIf="isPostVisible">
+    <div class="single-post">
+        <button class="close-btn" (click)="hidePost()">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+        <app-single-post
+            [stPost]="selectedPost"
+            (noOfLikesUpdated)="(true)"
+        ></app-single-post>
+    </div>
+</div>

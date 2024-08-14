@@ -1,0 +1,41 @@
+<div class="navbar">
+    <div class="logo">
+        <div class="heading">DoubleHash</div>
+    </div>
+    <div class="search-container">
+        <form [formGroup]="searchForm" (ngSubmit)="search()">
+            <div class="search-wrapper">
+                <i class="fa fa-search"></i>
+                <input
+                    class="search-field"
+                    formControlName="searchText"
+                    type="text"
+                    placeholder="Search"
+                />
+            </div>
+        </form>
+        <div class="search-results-container" *ngIf="filteredUsers.length">
+            <div
+                class="search-result"
+                *ngFor="let user of filteredUsers"
+                routerLink="/others-profile/{{ user.key }}"
+                (click)="clearFilteredUsers()"
+            >
+                <img
+                    src="{{
+                        user.profileImage ? user.profileImage : defaultUserImage
+                    }}"
+                    alt="Profile Image"
+                />
+                <span>{{ user.userName }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="hamburger" (click)="toggleMenu()">
+        <i class="fa fa-bars"></i>
+    </div>
+    <div class="navigation-icons" [ngClass]="{ show: isMenuOpen }">
+        <a href="">Home</a>
+        <a href="">Profile</a>
+    </div>
+</div>

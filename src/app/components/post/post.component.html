@@ -1,0 +1,44 @@
+<div class="modal-overlay">
+    <div class="modal">
+        <div class="modal-header">
+            <h2>Add a Post</h2>
+            <button class="close-btn" (click)="close()">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="post-form">
+            <form [formGroup]="postForm" (ngSubmit)="post(postForm.value)">
+                <div class="add-post-body">
+                    <label class="file-upload-label" for="postImage">
+                        <i *ngIf="!imagePreview" class="fa fa-plus"></i>
+                        <input
+                            *ngIf="!imagePreview"
+                            class="file-upload"
+                            id="postImage"
+                            class="form-control"
+                            formControlName="postImage"
+                            type="file"
+                            (change)="onImageSelected($event)"
+                        />
+                    </label>
+                    <img
+                        *ngIf="imagePreview"
+                        [src]="base64Image"
+                        alt="Image Preview"
+                        class="image-preview"
+                    />
+
+                    <input
+                        type="text"
+                        class="form-control my-2 description"
+                        formControlName="postDescription"
+                        placeholder="Add a description ..."
+                    />
+                    <button class="comment-btn" id="commentBtn">
+                        Add Post
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

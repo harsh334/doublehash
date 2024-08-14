@@ -1,0 +1,19 @@
+.bottom-navbar{
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    background-color: #ff7f7f28;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+.bottom-navbar-section{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.fa{
+    font-size: 25px;
+}

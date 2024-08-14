@@ -1,0 +1,29 @@
+<app-post *ngIf="isModalOpen" (closeModal)="closeModal()"></app-post>
+<div class="bottom-navbar">
+    <div class="bottom-navbar-section">
+        <div class="button-container home">
+            <a routerLink="/single-post">
+                <i class="fa fa-home" aria-hidden="true"></i>
+            </a>
+        </div>
+        <!--just for testing-->
+        <div class="button-container home">
+            <a routerLink="/posts">
+                <i class="fa fa-bell" aria-hidden="true"></i>
+            </a>
+        </div>
+        <div class="button-container home" (click)="openModal()">
+            <i class="fa fa-plus-square" aria-hidden="true"></i>
+        </div>
+        <div class="button-container home">
+            <a routerLink="/login">
+                <i class="fa fa-users" aria-hidden="true"></i>
+            </a>
+        </div>
+        <div class="button-container home">
+            <a routerLink="/profile">
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+</div>

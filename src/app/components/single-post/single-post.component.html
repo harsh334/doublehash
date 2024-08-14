@@ -1,0 +1,87 @@
+<div class="main panel panel-default z-depth-4">
+    <div class="panel-body">
+        <div
+            class="media cursor-on-hover"
+            routerLink="/others-profile/{{ stPost.userID }}"
+        >
+            <div class="media-left">
+                <img
+                    src="{{
+                        stPost.profileImage
+                            ? stPost.profileImage
+                            : defaultUserImage
+                    }}"
+                    class="media-object circle"
+                />
+            </div>
+            <div class="media-body">
+                <div>
+                    {{ stPost.userName }}
+                    <span class="time"> {{ stPost.timePosted }} </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="post">
+            <img class="not" alt="post" src="{{ stPost.imageLink }}" />
+            <div class="like-and-comment">
+                <div class="iconsec">
+                    <div class="left">
+                        <span id="like" (click)="like(stPost)">
+                            <i
+                                class="fa {{
+                                    isAlreadyLiked ? 'fa-heart' : 'fa-heart-o'
+                                }}"
+                            ></i>
+                        </span>
+                        <b class="cursor-on-hover" (click)="viewLikes()">
+                            {{ stPost.likes.length - 1 }} likes
+                        </b>
+                    </div>
+                    <div class="middle">
+                        <span (click)="readComments(stPost.key)">
+                            <i class="fa fa-comment-o"></i>
+                            {{ stPost.comments ? stPost.comments.length : 0 }}
+                            Comments
+                        </span>
+                    </div>
+                    <div class="right"><i class="fa fa-share"></i></div>
+                </div>
+                <div class="caption">
+                    {{ stPost.description }}
+                </div>
+                <div class="add-comments">
+                    <div (click)="readComments(stPost.key)">Add Comment...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-comments
+    *ngIf="isModalOpen"
+    [comment]="comments"
+    [postID]="stPost.key"
+    [userName]="loggedInUser.userName"
+    (closeModal)="closeModal()"
+></app-comments>
+
+<div class="like-overlay" *ngIf="isWhoLikedVisible">
+    <div class="like-box">
+        <div class="close" (click)="closeLikeBox()">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+        <h5 class="likes-header">Likes</h5>
+        <div class="likelist">
+            <div class="likes" *ngFor="let user of userWhoLikedThePost">
+                <div class="like-user-profile-image">
+                    <img src="{{ user.profileImage }}" />
+                </div>
+                <div class="username">{{ user.userName }}</div>
+            </div>
+            <div class="likes" *ngIf="userWhoLikedThePost.length == 0">
+                No likes yet
+            </div>
+        </div>
+    </div>
+</div>

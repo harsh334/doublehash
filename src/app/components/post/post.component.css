@@ -1,0 +1,126 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    position: relative;
+    display: block;
+    width: 50%;
+    height: fit-content;
+    padding-bottom: 45px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .close-btn{
+    background-color: #fff;
+    border: none;
+    font-size: larger;
+  }
+
+  .file-upload-label{
+    width: 100%;
+  }
+
+  .add-post-body{
+    position: relative;
+    width:50%;
+    margin: auto;
+  }
+
+  .add-post-body input[type=file]{
+    height: 200px;
+    object-fit: contain;
+    background-color: #f1e5ff;
+    content-visibility: hidden;
+  }
+
+  .add-post-body i{
+    position: absolute;
+    z-index: 1;
+    top: 32%;
+    left: 48%;
+  }
+
+  .image-preview{
+    height: 200px;
+    width: 100%;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+    background-color: #f1e5ff;
+  }
+
+  .description{
+    border: none;
+  }
+  
+  .comment-btn{
+    width: 100%;
+    background-color: #f1e5ff;
+    border: 2px solid #dde1e6;
+    border-radius: 30px;
+    box-shadow: #dde1e6 4px 4px 0 0;
+    color: #010264;
+    font-weight: 600;
+    padding: 0 10px;
+    line-height: 30px;
+  }
+
+  .comment-btn:hover {
+    background-color: #fff;
+  }
+
+  .comment-btn:active {
+    box-shadow: #6801ee 2px 2px 0 0;
+    transform: translate(2px, 2px);
+  }
+
+  @media (max-width:480px){
+    .modal{
+      width:90%;
+      height: 65%;
+    }
+    .add-post-body{
+      width:90%;
+    }
+  }
+  @media (min-width: 768px) {
+    .comment-btn {
+      min-width: 120px;
+      padding: 0 25px;
+    }
+  }
+  @media (min-width:481px) and (max-width:767px){
+    .modal{
+      width:70%;
+    }
+    .add-post-body{
+      width:90%;
+    }
+  }
+@media (min-width:768px) and (max-width:1024px){
+  .modal{
+    width:60%;
+  }
+  .add-post-body{
+    width:65%;
+  }
+}

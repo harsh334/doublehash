@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="spinner" *ngIf="isSpinnerVisible">
+        <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+        <span class="sr-only">Loading...</span>
+    </div>
+    <div class="profile">
+        <img
+            src="{{ user.profileImage ? user.profileImage : '' }}"
+            alt="Profile Picture"
+        />
+        <div class="profile-details">
+            <h3>{{ user.userName }}</h3>
+            <p>Name : {{ user.fullName }}</p>
+            <p>Email: {{ user.userEmail }}</p>
+        </div>
+    </div>
+
+    <h3 class="my-3">Recent Posts</h3>
+    <div class="gallery">
+        <div class="images" *ngFor="let post of posts">
+            <img
+                src="{{ post.imageLink ? post.imageLink : '' }}"
+                (click)="showPost(post)"
+                alt="Image"
+            />
+        </div>
+    </div>
+</div>
+
+<div class="box-overlay" *ngIf="isPostVisible">
+    <div class="single-post">
+        <button class="close-btn" (click)="hidePost()">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+        <app-single-post
+            [stPost]="selectedPost"
+            (noOfLikesUpdated)="(true)"
+        ></app-single-post>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="comment-overlay">
+    <div class="comment-box" (click)="$event.stopPropagation()">
+        <div class="header-and-comments">
+            <div class="comment-header">
+                <h2>Comments</h2>
+                <button class="close-btn" (click)="close()">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="comments">
+                <p class=".text-muted" *ngIf="comment.length == 0">
+                    No comments yet
+                </p>
+                <p *ngFor="let singleComment of comment" class="comment">
+                    {{ singleComment["description"] }}
+                </p>
+            </div>
+        </div>
+        <div class="add-comments">
+            <form
+                class="comment-form"
+                [formGroup]="commentForm"
+                (ngSubmit)="addComment(postID, commentForm.value)"
+            >
+                <input
+                    type="text"
+                    name="commentBox"
+                    id="commentBox"
+                    formControlName="commentText"
+                    placeholder="Add comment"
+                />
+                <button
+                    [class]="
+                        commentForm.get('commentText')?.value
+                            ? 'comment-btn'
+                            : 'disabled-btn'
+                    "
+                    id="commentBtn"
+                    [disabled]="!commentForm.get('commentText')?.value"
+                >
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </button>
+            </form>
+            <div class="spinner" *ngIf="isSpinnerVisible">
+                <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </div>
+</div>
