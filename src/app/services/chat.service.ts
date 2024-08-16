@@ -9,6 +9,7 @@ import {
     query,
     where,
     getDocs,
+    orderBy,
 } from '@angular/fire/firestore';
 import { Auth } from '@angular/fire/auth';
 import { AuthService } from './auth.service';
@@ -75,6 +76,7 @@ export class ChatService {
             this.firestore,
             `chats/${chatId}/messages`
         );
-        return collectionData(messagesCollection, { idField: 'id' });
+        const messagesQuery = query(messagesCollection, orderBy('timestamp'));
+        return collectionData(messagesQuery, { idField: 'id' });
     }
 }
