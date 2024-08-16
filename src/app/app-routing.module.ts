@@ -10,18 +10,19 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { PostComponent } from './components/post/post.component';
 import { OthersProfileComponent } from './components/others-profile/others-profile.component';
 import { isUserAuthenticated } from './guards/auth-guard';
+import { ChatComponent } from './components/chat/chat.component';
 
 const routes: Routes = [
     { path: '', component: PostsComponent },
     {
         path: 'register',
         component: RegisterComponent,
-        canActivate: [!isUserAuthenticated],
+        // canActivate: [!isUserAuthenticated],
     },
     {
         path: 'login',
         component: LoginComponent,
-        canActivate: [!isUserAuthenticated],
+        // canActivate: [!isUserAuthenticated],
     },
     { path: 'main-page', component: MainPageComponent },
     { path: 'single-post', component: SinglePostComponent },
@@ -29,6 +30,7 @@ const routes: Routes = [
     { path: 'comments', component: CommentsComponent },
     { path: 'profile', component: ProfileComponent },
     { path: 'post', component: PostComponent },
+    { path: 'chat', component: ChatComponent },
     { path: 'others-profile/:userId', component: OthersProfileComponent },
 ];
 

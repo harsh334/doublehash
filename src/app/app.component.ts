@@ -8,4 +8,9 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent {
     title = 'doubleHash';
+    selectedUser: any;
+
+    onUserSelected(user: any) {
+        this.selectedUser = user;
+    }
 }
