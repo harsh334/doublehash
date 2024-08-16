@@ -1,22 +1,3 @@
-<!-- <div class="chat-window">
-    <div class="messages">
-        <div *ngFor="let message of messages | async">
-            <p>
-                <strong>{{ message.senderId }}:</strong> {{ message.message }}
-            </p>
-        </div>
-    </div>
-    <form (ngSubmit)="sendMessage()" class="message-form">
-        <input
-            [(ngModel)]="newMessage"
-            name="message"
-            placeholder="Type a message..."
-            required
-        />
-        <button type="submit">Send</button>
-    </form>
-</div> -->
-
 <div *ngIf="selectedUser" class="chat-window">
     <div class="chat-header">
         <h2>Chat with {{ selectedUser.displayName }}</h2>
