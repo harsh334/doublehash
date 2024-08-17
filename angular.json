@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "doubleHash:build:production"
+              "buildTarget": "doubleHash:build:production"
             },
             "development": {
-              "browserTarget": "doubleHash:build:development"
+              "buildTarget": "doubleHash:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "doubleHash:build"
+            "buildTarget": "doubleHash:build"
           }
         },
         "test": {
