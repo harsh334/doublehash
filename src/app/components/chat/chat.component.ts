@@ -10,6 +10,7 @@ import { SharedService } from 'src/app/services/shared.service';
 })
 export class ChatComponent implements OnInit, OnChanges {
     @Input() selectedUser: any; // User selected from the user list
+    // selectedUser: any;
     messages!: Observable<any[]>;
     newMessage: string = '';
     chatId: string = '';
@@ -25,12 +26,25 @@ export class ChatComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges() {
+        console.log('onchanges', this.selectedUser);
+
         if (this.selectedUser) {
+            console.log('inside onchnage inside if');
+
             this.loadChat();
         }
     }
+    // onUserSelected(user: any) {
+    //     this.selectedUser = user;
+    //     // if (this.selectedUser) {
+    //     //     console.log('inside onuserseleced inside if');
+
+    //     //     this.loadChat();
+    //     // }
+    // }
 
     async loadChat() {
+        console.log('loadchat', this.selectedUser);
         if (this.selectedUser) {
             this.chatId = await this.chatService.getOrCreateChat(
                 this.selectedUser.key

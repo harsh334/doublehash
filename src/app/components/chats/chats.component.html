@@ -1,0 +1,22 @@
+<div class="chat-app-container">
+    <div
+        class="search-icon {{ isSearchVisible ? 'not-display' : 'display' }}"
+        (click)="showSearch()"
+    >
+        <i class="fa fa-search" aria-hidden="true"></i>
+    </div>
+    <div
+        class="user-list-container {{
+            isSearchVisible ? 'width-100' : 'width-0'
+        }}"
+    >
+        <app-user-list (userSelected)="onUserSelected($event)"></app-user-list>
+    </div>
+    <div
+        class="chat-container {{
+            isSearchVisible ? 'width-0 not-display' : 'width-100'
+        }}"
+    >
+        <app-chat [selectedUser]="selectedUser"></app-chat>
+    </div>
+</div>

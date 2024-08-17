@@ -11,6 +11,7 @@ import { PostComponent } from './components/post/post.component';
 import { OthersProfileComponent } from './components/others-profile/others-profile.component';
 import { isUserAuthenticated } from './guards/auth-guard';
 import { ChatComponent } from './components/chat/chat.component';
+import { ChatsComponent } from './components/chats/chats.component';
 
 const routes: Routes = [
     { path: '', component: PostsComponent },
@@ -31,6 +32,7 @@ const routes: Routes = [
     { path: 'profile', component: ProfileComponent },
     { path: 'post', component: PostComponent },
     { path: 'chat', component: ChatComponent },
+    { path: 'chats', component: ChatsComponent },
     { path: 'others-profile/:userId', component: OthersProfileComponent },
 ];
 

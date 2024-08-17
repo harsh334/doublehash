@@ -28,6 +28,7 @@ import { OthersProfileComponent } from './components/others-profile/others-profi
 import { ChatComponent } from './components/chat/chat.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { UserListComponent } from './components/user-list/user-list.component';
+import { ChatsComponent } from './components/chats/chats.component';
 
 @NgModule({
     declarations: [
@@ -46,6 +47,7 @@ import { UserListComponent } from './components/user-list/user-list.component';
         OthersProfileComponent,
         ChatComponent,
         UserListComponent,
+        ChatsComponent,
     ],
     imports: [
         BrowserModule,

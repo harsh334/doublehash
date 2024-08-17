@@ -1,6 +1,4 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Firestore, collectionData, collection } from '@angular/fire/firestore';
 import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
@@ -10,18 +8,16 @@ import { SharedService } from 'src/app/services/shared.service';
 })
 export class UserListComponent implements OnInit {
     users!: any[];
+    filteredUsers!: any[];
     loggedInUser!: any;
+    searchQuery: string = '';
     @Output() userSelected = new EventEmitter<any>();
 
-    constructor(
-        private firestore: Firestore,
-        private sharedService: SharedService
-    ) {}
+    constructor(private sharedService: SharedService) {}
 
     ngOnInit(): void {
         this.loggedInUser = this.sharedService.getLoggedInUser();
         this.loadUsers();
-        console.log('loggedinuser', this.loggedInUser);
     }
 
     loadUsers() {
@@ -29,7 +25,15 @@ export class UserListComponent implements OnInit {
             this.users = users.filter((user: any) => {
                 return user.userEmail !== this.loggedInUser.userEmail;
             });
+            this.filteredUsers = this.users; // Initialize with all users
         });
+    }
+
+    filterUsers() {
+        const query = this.searchQuery.toLowerCase();
+        this.filteredUsers = this.users.filter((user) =>
+            user.fullName.toLowerCase().includes(query)
+        );
     }
 
     selectUser(user: any) {
