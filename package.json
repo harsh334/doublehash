@@ -23,6 +23,7 @@
     "firebase": "^10.13.0",
     "image-compressor": "^2.0.3",
     "ngx-image-compress": "^15.1.6",
+    "ngx-toastr": "^19.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"

@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 import { SharedService } from 'src/app/services/shared.service';
+import { ToasterService } from 'src/app/services/toaster.service';
 import { Constants } from 'src/app/shared/constants';
 
 @Component({
@@ -15,6 +17,13 @@ export class LoginComponent {
     usersList: string[] = [];
     invalidCredentialMessage: string = Constants.invalidCredentialMessage;
     showInvalidCredentialMessage: boolean = false;
+    constructor(
+        private authService: AuthService,
+        private sharedService: SharedService,
+        private toastr: ToastrService,
+        private toasterService: ToasterService,
+        private route: Router
+    ) {}
     ngOnInit() {
         this.loginForm = new FormGroup({
             userEmail: new FormControl('', [
@@ -35,11 +44,7 @@ export class LoginComponent {
     get password() {
         return this.loginForm.get('password');
     }
-    constructor(
-        private authService: AuthService,
-        private sharedService: SharedService,
-        private route: Router
-    ) {}
+
     getUsers() {
         let userList: string[] = [];
         this.sharedService.getUsers().subscribe((users: any) => {
@@ -57,7 +62,9 @@ export class LoginComponent {
                 //subject se isLoginnned ko true krdo
                 let isLoggedIn: any = this.authService.login(user);
                 if (isLoggedIn) {
-                    //show successful toaster
+                    this.toasterService.showSuccess(
+                        'You Are Successfully Logged In! '
+                    );
                     this.redirectToProfilePage();
                 }
                 return;

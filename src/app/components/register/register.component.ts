@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegistrationService } from 'src/app/services/registration.service';
+import { ToasterService } from 'src/app/services/toaster.service';
 
 @Component({
     selector: 'app-register',
@@ -16,6 +17,7 @@ export class RegisterComponent {
     registerForm!: FormGroup;
     constructor(
         private registrationService: RegistrationService,
+        private toasterService: ToasterService,
         private route: Router
     ) {}
     ngOnInit() {
@@ -95,7 +97,9 @@ export class RegisterComponent {
         formDetails.profileImage = this.base64Image;
         this.registrationService.register(formDetails).subscribe((result) => {
             if (result) {
-                // show toaster for successfull login
+                this.toasterService.showSuccess(
+                    'You Are Successfully Registered!'
+                );
                 this.redirectToLoginPage();
             }
         });

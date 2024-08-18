@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { SharedService } from 'src/app/services/shared.service';
+import { ToasterService } from 'src/app/services/toaster.service';
 
 @Component({
     selector: 'app-post',
@@ -14,7 +15,10 @@ export class PostComponent {
     postForm!: FormGroup;
     loggedInUser!: any;
     imagePreview: boolean = false;
-    constructor(private sharedService: SharedService) {}
+    constructor(
+        private sharedService: SharedService,
+        private toasterService: ToasterService
+    ) {}
     ngOnInit() {
         this.getLoggedInUser();
         this.postForm = new FormGroup({
@@ -62,6 +66,7 @@ export class PostComponent {
             this.sharedService.updateUserDetailsInLocalStorage(
                 this.loggedInUser
             );
+            this.toasterService.showSuccess('Post added successfully');
             this.close();
             this.sharedService.changeInUserDetails$.next();
         });

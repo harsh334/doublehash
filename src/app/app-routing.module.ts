@@ -14,7 +14,7 @@ import { ChatComponent } from './components/chat/chat.component';
 import { ChatsComponent } from './components/chats/chats.component';
 
 const routes: Routes = [
-    { path: '', component: PostsComponent },
+    { path: '', component: LoginComponent },
     {
         path: 'register',
         component: RegisterComponent,

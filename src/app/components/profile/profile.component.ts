@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Route, Router } from '@angular/router';
 import { Constants } from 'src/app/shared/constants';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToasterService } from 'src/app/services/toaster.service';
 
 @Component({
     selector: 'app-profile',
@@ -26,6 +27,7 @@ export class ProfileComponent {
     constructor(
         private sharedService: SharedService,
         private authService: AuthService,
+        private toasterService: ToasterService,
         private route: Router
     ) {}
     ngOnInit() {
@@ -108,6 +110,9 @@ export class ProfileComponent {
 
                 this.sharedService.updateUserDetailsInLocalStorage(
                     loggedInUser
+                );
+                this.toasterService.showSuccess(
+                    'User profile updated successfully'
                 );
                 this.sharedService.changeInUserDetails$.next();
             });

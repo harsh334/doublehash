@@ -29,6 +29,8 @@ import { ChatComponent } from './components/chat/chat.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { ChatsComponent } from './components/chats/chats.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
     declarations: [
@@ -55,6 +57,8 @@ import { ChatsComponent } from './components/chats/chats.component';
         ReactiveFormsModule,
         HttpClientModule,
         FormsModule,
+        BrowserAnimationsModule,
+        ToastrModule.forRoot(),
     ],
     providers: [
         provideFirebaseApp(() => initializeApp(environment.firebase)),
