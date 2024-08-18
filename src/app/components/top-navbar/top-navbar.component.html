@@ -35,7 +35,9 @@
         <i class="fa fa-bars"></i>
     </div>
     <div class="navigation-icons" [ngClass]="{ show: isMenuOpen }">
-        <a href="">Home</a>
-        <a href="">Profile</a>
+        <a routerLink="/chats">
+            <i class="fa fa-comments-o" aria-hidden="true"></i> Chat
+        </a>
+        <a> <i class="fa fa-user-secret" aria-hidden="true"></i> Profle </a>
     </div>
 </div>
