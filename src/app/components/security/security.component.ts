@@ -25,6 +25,7 @@ export class SecurityComponent {
         private route: Router
     ) {}
     ngOnInit() {
+        this.toasterService.showWarning(Constants.logoutWarning);
         this.loggedInUser = this.sharedService.getLoggedInUser();
         this.editProfileForm = new FormGroup({
             oldPassword: new FormControl('', [Validators.required]),
@@ -44,7 +45,7 @@ export class SecurityComponent {
                 })
                 .subscribe(() => {
                     this.toasterService.showSuccess(
-                        'Password Changed Successfully'
+                        Constants.passwordChangeSuccessful
                     );
                     this.authService.logout();
                     this.redirectToLogin();

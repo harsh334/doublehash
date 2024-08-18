@@ -12,4 +12,7 @@ export class ToasterService {
     showError(message: string) {
         this.toastr.error(message);
     }
+    showWarning(message: string) {
+        this.toastr.warning(message);
+    }
 }

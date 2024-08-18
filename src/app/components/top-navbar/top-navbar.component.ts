@@ -36,4 +36,7 @@ export class TopNavbarComponent {
     toggleMenu() {
         this.isMenuOpen = !this.isMenuOpen;
     }
+    closeMenu() {
+        this.isMenuOpen = false;
+    }
 }

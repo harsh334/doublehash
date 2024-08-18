@@ -32,14 +32,14 @@
         </div>
     </div>
     <div class="hamburger" (click)="toggleMenu()">
-        <i class="fa fa-bars"></i>
+        <i class="fa {{ isMenuOpen ? 'fa-times' : 'fa-bars' }}"></i>
     </div>
     <div class="navigation-icons" [ngClass]="{ show: isMenuOpen }">
-        <a routerLink="/chats">
+        <div routerLink="/chats" (click)="closeMenu()">
             <i class="fa fa-comments-o" aria-hidden="true"></i> Chat
-        </a>
-        <a routerLink="/security">
+        </div>
+        <div routerLink="/security" (click)="closeMenu()">
             <i class="fa fa-user-secret" aria-hidden="true"></i> Profle
-        </a>
+        </div>
     </div>
 </div>

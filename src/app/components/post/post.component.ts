@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { SharedService } from 'src/app/services/shared.service';
 import { ToasterService } from 'src/app/services/toaster.service';
+import { Constants } from 'src/app/shared/constants';
 
 @Component({
     selector: 'app-post',
@@ -66,12 +67,12 @@ export class PostComponent {
             this.sharedService.updateUserDetailsInLocalStorage(
                 this.loggedInUser
             );
-            this.toasterService.showSuccess('Post added successfully');
+            this.toasterService.showSuccess(Constants.successfulPostAdd);
             this.close();
             this.sharedService.changeInUserDetails$.next();
         });
     }
-    ////console.log({'image':'link','likes':0,'userID':loggedInUser.key,'comments':[{'userName':'harsh','description':'lorem ipsum madrid'}]})
+
     getLoggedInUser() {
         this.loggedInUser = this.sharedService.getLoggedInUser();
     }

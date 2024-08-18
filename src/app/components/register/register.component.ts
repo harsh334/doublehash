@@ -3,6 +3,7 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegistrationService } from 'src/app/services/registration.service';
 import { ToasterService } from 'src/app/services/toaster.service';
+import { Constants } from 'src/app/shared/constants';
 
 @Component({
     selector: 'app-register',
@@ -98,7 +99,7 @@ export class RegisterComponent {
         this.registrationService.register(formDetails).subscribe((result) => {
             if (result) {
                 this.toasterService.showSuccess(
-                    'You Are Successfully Registered!'
+                    Constants.successfulRegisteration
                 );
                 this.redirectToLoginPage();
             }

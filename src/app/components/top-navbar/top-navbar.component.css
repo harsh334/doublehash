@@ -91,14 +91,15 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(17,125,173,1) 56%, rg
 	align-items: center;
 }
 
-.navigation-icons a {
+.navigation-icons div {
 	color: white;
 	text-decoration: none;
 	margin-left: 20px;
 }
 
-.navigation-icons a:hover {
-	text-decoration: underline;
+.navigation-icons div:hover {
+	color: #744fdb;
+	cursor: pointer;
 }
 
 /* Responsive design */
@@ -119,7 +120,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(17,125,173,1) 56%, rg
 		z-index: 2;
 	}
 
-	.navigation-icons a {
+	.navigation-icons div {
 		 margin: 10px 0;
 	}
 }
@@ -157,7 +158,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(17,125,173,1) 56%, rg
 		 display: flex;
 	}
 
-	.navigation-icons a {
+	.navigation-icons div {
 		 margin: 10px 0;
 		 color: white;
 	}

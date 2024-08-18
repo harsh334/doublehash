@@ -112,7 +112,7 @@ export class ProfileComponent {
                     loggedInUser
                 );
                 this.toasterService.showSuccess(
-                    'User profile updated successfully'
+                    Constants.successfulProfileUpdate
                 );
                 this.sharedService.changeInUserDetails$.next();
             });

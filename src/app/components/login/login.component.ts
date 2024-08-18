@@ -59,12 +59,9 @@ export class LoginComponent {
                 user.userEmail === formDetails.userEmail &&
                 user.password === formDetails.password
             ) {
-                //subject se isLoginnned ko true krdo
                 let isLoggedIn: any = this.authService.login(user);
                 if (isLoggedIn) {
-                    this.toasterService.showSuccess(
-                        'You Are Successfully Logged In! '
-                    );
+                    this.toasterService.showSuccess(Constants.successfulLogin);
                     this.redirectToProfilePage();
                 }
                 return;
