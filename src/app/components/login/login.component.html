@@ -76,15 +76,14 @@
                                     </span>
 
                                     <span *ngIf="password.errors?.['pattern']">
-                                        Password must contain atleast a number,
-                                        special character & camel case letter.
+                                        atleast a number,special character &
+                                        camel case.
                                     </span>
 
                                     <span
                                         *ngIf="password.errors?.['minlength'] && !password.errors?.['pattern']"
                                     >
-                                        Password should be atleast 8 letters
-                                        long.
+                                        atleast 8 letters.
                                     </span>
                                 </div>
 

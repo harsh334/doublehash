@@ -12,6 +12,7 @@ import { OthersProfileComponent } from './components/others-profile/others-profi
 import { isUserAuthenticated } from './guards/auth-guard';
 import { ChatComponent } from './components/chat/chat.component';
 import { ChatsComponent } from './components/chats/chats.component';
+import { SecurityComponent } from './components/security/security.component';
 
 const routes: Routes = [
     { path: '', component: LoginComponent },
@@ -33,6 +34,7 @@ const routes: Routes = [
     { path: 'post', component: PostComponent },
     { path: 'chat', component: ChatComponent },
     { path: 'chats', component: ChatsComponent },
+    { path: 'security', component: SecurityComponent },
     { path: 'others-profile/:userId', component: OthersProfileComponent },
 ];
 

@@ -31,6 +31,7 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { ChatsComponent } from './components/chats/chats.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { SecurityComponent } from './components/security/security.component';
 
 @NgModule({
     declarations: [
@@ -50,6 +51,7 @@ import { ToastrModule } from 'ngx-toastr';
         ChatComponent,
         UserListComponent,
         ChatsComponent,
+        SecurityComponent,
     ],
     imports: [
         BrowserModule,
