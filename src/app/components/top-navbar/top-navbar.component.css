@@ -99,6 +99,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(17,125,173,1) 56%, rg
 
 .navigation-icons div:hover {
 	color: #744fdb;
+	background-color: #f7f7f7;
 	cursor: pointer;
 }
 
@@ -121,11 +122,10 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(17,125,173,1) 56%, rg
 	}
 
 	.navigation-icons div {
-		 margin: 10px 0;
+		width: 100%;
+		 margin: 5px 0;
 	}
 }
-
-
 
 .hamburger {
 	display: none;
@@ -159,7 +159,8 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(17,125,173,1) 56%, rg
 	}
 
 	.navigation-icons div {
-		 margin: 10px 0;
+		width: 100%;
+		 margin: 5px 0;
 		 color: white;
 	}
 }

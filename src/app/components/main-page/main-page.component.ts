@@ -20,10 +20,13 @@ export class MainPageComponent {
         });
     }
     showNavbarIfUserLoggedIn() {
-        if (localStorage.getItem('user') !== null) {
-            this.showNavbar = true;
-        } else {
+        let isUserLoggedIn = this.sharedService.getLoggedInUser();
+        console.log('isUserloggedIn', isUserLoggedIn);
+
+        if (isUserLoggedIn === null) {
             this.showNavbar = false;
+        } else {
+            this.showNavbar = true;
         }
     }
 }

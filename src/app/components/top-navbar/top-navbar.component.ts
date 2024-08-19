@@ -19,12 +19,17 @@ export class TopNavbarComponent {
         this.searchForm = new FormGroup({ searchText: new FormControl('') });
     }
     search() {
-        const searchedText = this.searchForm.get('searchText')?.value;
+        const searchedText = this.searchForm
+            .get('searchText')
+            ?.value.toLowerCase();
+
         this.sharedService.getUsers().subscribe((users: any[]) => {
             const filteredUsers = users.filter((userDetail: any) => {
+                console.log('searchedText', userDetail.userName.toLowerCase());
                 return (
-                    userDetail.userName === searchedText ||
-                    userDetail.userEmail === searchedText
+                    userDetail.userName.toLowerCase().includes(searchedText) ||
+                    userDetail.userEmail.toLowerCase().includes(searchedText) ||
+                    userDetail.fullName.toLowerCase().includes(searchedText)
                 );
             });
             this.filteredUsers = filteredUsers;
