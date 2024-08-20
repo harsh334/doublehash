@@ -44,6 +44,7 @@ export class OthersProfileComponent {
     getPostByPostID(postID: string): void {
         this.sharedService.getPostByPostID(postID).subscribe((post: any) => {
             console.log('post', post);
+            post.key = postID;
             this.posts.push(post);
         });
     }

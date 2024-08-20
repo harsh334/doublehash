@@ -82,6 +82,8 @@ export class SharedService {
     }
 
     getComments(postID: string) {
+        console.log('inside getComments', postID);
+
         return this.http.get(
             Constants.firebaseUrl + 'Post/' + postID + '.json'
         );

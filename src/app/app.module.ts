@@ -32,6 +32,7 @@ import { ChatsComponent } from './components/chats/chats.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { SecurityComponent } from './components/security/security.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
     declarations: [
@@ -52,6 +53,7 @@ import { SecurityComponent } from './components/security/security.component';
         UserListComponent,
         ChatsComponent,
         SecurityComponent,
+        AboutComponent,
     ],
     imports: [
         BrowserModule,

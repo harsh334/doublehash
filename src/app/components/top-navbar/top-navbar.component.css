@@ -60,6 +60,18 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(17,125,173,1) 56%, rg
 	z-index: 10;
 }
 
+.close{
+	position: absolute;
+   top: 0;
+   right: 10px;
+}
+
+.close-btn{
+	border: none;
+	background-color: transparent;
+	font-size: 20px;
+ }
+
 .search-result {
 	display: flex;
 	align-items: center;

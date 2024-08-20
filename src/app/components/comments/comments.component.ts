@@ -21,6 +21,8 @@ export class CommentsComponent {
     constructor(private sharedService: SharedService) {}
 
     ngOnInit() {
+        console.log('comment initiated');
+
         this.commentForm = new FormGroup({
             commentText: new FormControl(),
         });

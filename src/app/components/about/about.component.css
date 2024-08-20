@@ -6,3 +6,41 @@
    border-radius: 10px;
    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
  }
+ .about-box .header h3 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 1.2px;
+}
+
+.about-box .main p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 15px;
+  text-align: justify;
+}
+
+.about-box a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+.about-box a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.about-box div:last-child {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.about-box div:last-child p {
+  font-size: 1.2rem;
+  color: #333;
+  font-weight: 500;
+}

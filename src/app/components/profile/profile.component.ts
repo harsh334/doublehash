@@ -54,6 +54,7 @@ export class ProfileComponent {
     getPostByPostID(postID: string): void {
         this.sharedService.getPostByPostID(postID).subscribe(
             (post: any) => {
+                post.key = postID;
                 this.posts.push(post);
                 this.isSpinnerVisible = false;
             },

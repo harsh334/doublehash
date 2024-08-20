@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import {
+    Component,
+    OnInit,
+    Input,
+    OnChanges,
+    ViewChild,
+    ElementRef,
+} from '@angular/core';
 import { ChatService } from 'src/app/services/chat.service';
 import { Observable } from 'rxjs';
 import { SharedService } from 'src/app/services/shared.service';
@@ -10,7 +17,6 @@ import { SharedService } from 'src/app/services/shared.service';
 })
 export class ChatComponent implements OnInit, OnChanges {
     @Input() selectedUser: any; // User selected from the user list
-    // selectedUser: any;
     messages!: Observable<any[]>;
     newMessage: string = '';
     chatId: string = '';
@@ -21,27 +27,14 @@ export class ChatComponent implements OnInit, OnChanges {
     ) {}
 
     ngOnInit(): void {
-        // Watch for selectedUser change
         this.loadChat();
     }
 
     ngOnChanges() {
-        console.log('onchanges', this.selectedUser);
-
         if (this.selectedUser) {
-            console.log('inside onchnage inside if');
-
             this.loadChat();
         }
     }
-    // onUserSelected(user: any) {
-    //     this.selectedUser = user;
-    //     // if (this.selectedUser) {
-    //     //     console.log('inside onuserseleced inside if');
-
-    //     //     this.loadChat();
-    //     // }
-    // }
 
     async loadChat() {
         console.log('loadchat', this.selectedUser);

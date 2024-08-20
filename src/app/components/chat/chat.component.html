@@ -5,7 +5,7 @@
             <h2>{{ selectedUser.fullName }} ({{ selectedUser.userName }})</h2>
         </div>
     </div>
-    <div class="messages">
+    <div class="messages" #messagesContainer>
         <div
             *ngFor="let message of messages | async; trackBy: trackByFn"
             [ngClass]="{
@@ -14,9 +14,9 @@
             }"
         >
             <p>{{ message.message }}</p>
-            <span class="timestamp">{{
-                message.timestamp?.toDate() | date : "shortTime"
-            }}</span>
+            <span class="timestamp">
+                {{ message.timestamp?.toDate() | date : "shortTime" }}
+            </span>
         </div>
     </div>
     <div class="form">
