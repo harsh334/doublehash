@@ -5,7 +5,7 @@
             <h2>{{ selectedUser.fullName }} ({{ selectedUser.userName }})</h2>
         </div>
     </div>
-    <div class="messages" #messagesContainer>
+    <div class="messages">
         <div
             *ngFor="let message of messages | async; trackBy: trackByFn"
             [ngClass]="{
@@ -13,7 +13,27 @@
                 received: !isSentByCurrentUser(message)
             }"
         >
-            <p>{{ message.message }}</p>
+            <p *ngIf="messageContainsOthersProfileLink(message.message)">
+                <a routerLink="{{ message.message }}">
+                    {{ message.message.split("/")[2] }}
+                </a>
+            </p>
+            <p *ngIf="messageContainsPostLink(message.message)">
+                <a
+                    href="javascript:void(0)"
+                    (click)="redirectToPost(message.message)"
+                >
+                    {{ message.message.split("/")[3] }}
+                </a>
+            </p>
+            <p
+                *ngIf="
+                    !messageContainsOthersProfileLink(message.message) &&
+                    !messageContainsPostLink(message.message)
+                "
+            >
+                {{ message.message }}
+            </p>
             <span class="timestamp">
                 {{ message.timestamp?.toDate() | date : "shortTime" }}
             </span>

@@ -39,13 +39,18 @@
                         </b>
                     </div>
                     <div class="middle">
-                        <span (click)="readComments(stPost.key)">
+                        <span
+                            class="cursor-on-hover"
+                            (click)="readComments(stPost.key)"
+                        >
                             <i class="fa fa-comment-o"></i>
                             {{ stPost.comments ? stPost.comments.length : 0 }}
                             Comments
                         </span>
                     </div>
-                    <div class="right"><i class="fa fa-share"></i></div>
+                    <div class="right" (click)="sharePost(stPost)">
+                        <i class="fa fa-share"></i>
+                    </div>
                 </div>
                 <div class="caption">
                     {{ stPost.description }}

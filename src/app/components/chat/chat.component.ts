@@ -9,6 +9,7 @@ import {
 import { ChatService } from 'src/app/services/chat.service';
 import { Observable } from 'rxjs';
 import { SharedService } from 'src/app/services/shared.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-chat',
@@ -23,7 +24,8 @@ export class ChatComponent implements OnInit, OnChanges {
 
     constructor(
         private chatService: ChatService,
-        private sharedService: SharedService
+        private sharedService: SharedService,
+        private route: Router
     ) {}
 
     ngOnInit(): void {
@@ -37,7 +39,6 @@ export class ChatComponent implements OnInit, OnChanges {
     }
 
     async loadChat() {
-        console.log('loadchat', this.selectedUser);
         if (this.selectedUser) {
             this.chatId = await this.chatService.getOrCreateChat(
                 this.selectedUser.key
@@ -54,6 +55,22 @@ export class ChatComponent implements OnInit, OnChanges {
                     this.newMessage = '';
                 });
         }
+    }
+
+    messageContainsOthersProfileLink(message: string) {
+        return message.startsWith('/others-profile/');
+    }
+
+    messageContainsPostLink(message: string) {
+        return message.startsWith('/post/');
+    }
+    redirectToPost(message: string) {
+        let userId = message.split('/')[2];
+        let postId = message.split('/')[3];
+
+        this.route.navigate([`/others-profile/${userId}`], {
+            queryParams: { postId: postId, userId: userId },
+        });
     }
 
     isSentByCurrentUser(message: any): boolean {

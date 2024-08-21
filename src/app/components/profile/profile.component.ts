@@ -97,8 +97,6 @@ export class ProfileComponent {
     }
 
     editProfile(userId: string, editedFormValues: any) {
-        console.log('editedFormValues', editedFormValues);
-
         if (editedFormValues.profileImage != undefined) {
             editedFormValues.profileImage = this.base64Image;
         } else {
@@ -107,8 +105,6 @@ export class ProfileComponent {
         this.sharedService
             .editProfile(userId, editedFormValues)
             .subscribe((user) => {
-                console.log('after editing', user);
-
                 this.sharedService.updateUserDetailsInLocalStorage(
                     loggedInUser
                 );
@@ -119,6 +115,22 @@ export class ProfileComponent {
             });
         const loggedInUser = { ...this.loggedInUser, ...editedFormValues };
         this.hideEditForm();
+    }
+
+    shareProfile() {
+        const shareLink = `/others-profile/${this.loggedInUser.key}`;
+        this.copyToClipboard(shareLink);
+        this.route.navigate(['/chats']);
+    }
+
+    copyToClipboard(shareLink: string) {
+        const textarea = document.createElement('textarea');
+        textarea.value = shareLink;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        this.toasterService.showSuccess(Constants.LinkCopied);
     }
 
     showPost(post: any) {

@@ -3,6 +3,7 @@ import { SharedService } from 'src/app/services/shared.service';
 import { Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Constants } from 'src/app/shared/constants';
+import { ToasterService } from 'src/app/services/toaster.service';
 @Component({
     selector: 'app-single-post',
     templateUrl: './single-post.component.html',
@@ -19,7 +20,11 @@ export class SinglePostComponent {
     isAlreadyLiked: boolean = false;
     userWhoLikedThePost: any[] = [];
     isWhoLikedVisible: boolean = false;
-    constructor(private sharedService: SharedService, private route: Router) {}
+    constructor(
+        private sharedService: SharedService,
+        private toasterService: ToasterService,
+        private route: Router
+    ) {}
     ngOnInit() {
         this.getLoggedInUser();
         console.log('stpost', this.stPost);
@@ -45,9 +50,7 @@ export class SinglePostComponent {
     }
 
     readComments(postID: string) {
-        console.log('inside readcomments', postID);
         this.sharedService.getComments(postID).subscribe((comments: any) => {
-            console.log('Comments', comments);
             if (comments.comments) {
                 this.comments = comments.comments;
             } else {
@@ -99,5 +102,21 @@ export class SinglePostComponent {
     closeLikeBox() {
         this.isWhoLikedVisible = false;
         this.userWhoLikedThePost = [];
+    }
+
+    sharePost(stPost: any) {
+        const shareLink = `/post/${stPost.userID}/${stPost.key}`;
+        this.copyToClipboard(shareLink);
+        this.route.navigate(['/chats']);
+    }
+
+    copyToClipboard(shareLink: string) {
+        const textarea = document.createElement('textarea');
+        textarea.value = shareLink;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        this.toasterService.showSuccess(Constants.LinkCopied);
     }
 }

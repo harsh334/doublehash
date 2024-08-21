@@ -12,6 +12,7 @@
             <h3>{{ user.userName }}</h3>
             <p>Name : {{ user.fullName }}</p>
             <p>Email: {{ user.userEmail }}</p>
+            <button class="" (click)="shareProfile()">Share Profile</button>
         </div>
     </div>
 
@@ -32,9 +33,7 @@
         <button class="close-btn" (click)="hidePost()">
             <i class="fa fa-times" aria-hidden="true"></i>
         </button>
-        <app-single-post
-            [stPost]="selectedPost"
-            (noOfLikesUpdated)="(true)"
-        ></app-single-post>
+        <app-single-post [stPost]="selectedPost" (noOfLikesUpdated)="(true)">
+        </app-single-post>
     </div>
 </div>
