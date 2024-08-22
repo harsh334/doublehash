@@ -6,6 +6,10 @@
         </div>
     </div>
     <div class="messages">
+        <div class="spinner" *ngIf="isSpinnerVisible">
+            <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+            <span class="sr-only">Loading...</span>
+        </div>
         <div
             *ngFor="let message of messages | async; trackBy: trackByFn"
             [ngClass]="{
@@ -42,6 +46,7 @@
     <div class="form">
         <form (ngSubmit)="sendMessage()" class="message-form">
             <input
+                #message
                 [(ngModel)]="newMessage"
                 name="message"
                 placeholder="Type a message..."

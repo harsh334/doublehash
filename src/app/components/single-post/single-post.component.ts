@@ -50,13 +50,13 @@ export class SinglePostComponent {
     }
 
     readComments(postID: string) {
+        this.isModalOpen = true;
         this.sharedService.getComments(postID).subscribe((comments: any) => {
             if (comments.comments) {
                 this.comments = comments.comments;
             } else {
                 this.comments = [];
             }
-            this.isModalOpen = true;
         });
     }
 

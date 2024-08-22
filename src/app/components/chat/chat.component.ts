@@ -1,6 +1,5 @@
 import {
     Component,
-    OnInit,
     Input,
     OnChanges,
     ViewChild,
@@ -16,21 +15,19 @@ import { Router } from '@angular/router';
     templateUrl: './chat.component.html',
     styleUrls: ['./chat.component.css'],
 })
-export class ChatComponent implements OnInit, OnChanges {
-    @Input() selectedUser: any; // User selected from the user list
+export class ChatComponent implements OnChanges {
+    @Input() selectedUser: any;
+    @ViewChild('message') message!: ElementRef;
     messages!: Observable<any[]>;
     newMessage: string = '';
     chatId: string = '';
+    isSpinnerVisible: boolean = false;
 
     constructor(
         private chatService: ChatService,
         private sharedService: SharedService,
         private route: Router
     ) {}
-
-    ngOnInit(): void {
-        this.loadChat();
-    }
 
     ngOnChanges() {
         if (this.selectedUser) {
@@ -39,12 +36,18 @@ export class ChatComponent implements OnInit, OnChanges {
     }
 
     async loadChat() {
+        this.isSpinnerVisible = true;
+        console.log('chat load start');
+
         if (this.selectedUser) {
             this.chatId = await this.chatService.getOrCreateChat(
                 this.selectedUser.key
             );
             this.messages = this.chatService.getMessages(this.chatId);
+            this.message.nativeElement.focus();
         }
+        console.log('chat load end');
+        this.isSpinnerVisible = false;
     }
 
     sendMessage() {

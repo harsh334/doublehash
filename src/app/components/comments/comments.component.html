@@ -23,6 +23,7 @@
                 (ngSubmit)="addComment(postID, commentForm.value)"
             >
                 <input
+                    #commentBox
                     type="text"
                     name="commentBox"
                     id="commentBox"
@@ -41,10 +42,6 @@
                     <i class="fa fa-plus" aria-hidden="true"></i>
                 </button>
             </form>
-            <div class="spinner" *ngIf="isSpinnerVisible">
-                <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-                <span class="sr-only">Loading...</span>
-            </div>
         </div>
     </div>
 </div>

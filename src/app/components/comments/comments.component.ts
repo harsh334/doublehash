@@ -1,9 +1,13 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+    Component,
+    ElementRef,
+    EventEmitter,
+    Input,
+    Output,
+    ViewChild,
+} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { SharedService } from 'src/app/services/shared.service';
-// import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-// import { CommentModalComponent } from './comment-modal/comment-modal.component';
-// import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 
 @Component({
     selector: 'app-comments',
@@ -15,18 +19,18 @@ export class CommentsComponent {
     @Input() postID: any = [];
     @Input() userName: string = '';
     @Output() closeModal = new EventEmitter<void>();
-    isSpinnerVisible: boolean = false;
+    @ViewChild('commentBox') commentBox!: ElementRef;
     commentForm!: FormGroup;
 
     constructor(private sharedService: SharedService) {}
 
     ngOnInit() {
-        console.log('comment initiated');
-
         this.commentForm = new FormGroup({
             commentText: new FormControl(),
         });
-        console.log('something came');
+    }
+    ngAfterViewInit() {
+        this.commentBox.nativeElement.focus();
     }
 
     close() {
@@ -34,7 +38,6 @@ export class CommentsComponent {
     }
 
     addComment(postID: string, comment: any) {
-        this.isSpinnerVisible = true;
         let stComment = [];
         this.sharedService.getComments(postID).subscribe((result: any) => {
             if (result['comments'] && result['comments'].length > 0) {
@@ -58,7 +61,6 @@ export class CommentsComponent {
                 .addComment(postID, stComment)
                 .subscribe((result: any) => {
                     this.comment = result['comments'];
-                    this.isSpinnerVisible = false;
                 });
         });
     }
