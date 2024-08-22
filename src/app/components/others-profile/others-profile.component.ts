@@ -18,12 +18,14 @@ export class OthersProfileComponent {
     isPostVisible = false;
     isSpinnerVisible: boolean = true;
     selectedPost: any;
+
     constructor(
         private route: ActivatedRoute,
         private sharedService: SharedService,
         private router: Router,
         private toasterService: ToasterService
     ) {}
+
     ngOnInit() {
         this.userId = this.route.snapshot.paramMap.get('userId');
 

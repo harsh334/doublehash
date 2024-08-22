@@ -9,20 +9,21 @@ import { SharedService } from 'src/app/services/shared.service';
 })
 export class MainPageComponent {
     showNavbar: boolean = false;
+
     constructor(
         private sharedService: SharedService,
         private authService: AuthService
     ) {}
+
     ngOnInit() {
         this.showNavbarIfUserLoggedIn();
         this.sharedService.changeInUserLogin$.subscribe(() => {
             this.showNavbarIfUserLoggedIn();
         });
     }
+
     showNavbarIfUserLoggedIn() {
         let isUserLoggedIn = this.sharedService.getLoggedInUser();
-        console.log('isUserloggedIn', isUserLoggedIn);
-
         if (isUserLoggedIn === null) {
             this.showNavbar = false;
         } else {

@@ -32,15 +32,9 @@ export class ChatComponent implements OnChanges {
     ) {}
 
     ngOnChanges() {
-        console.log('on chnage');
-
         if (this.selectedUser) {
             this.loadChat();
         }
-    }
-
-    ngAfterViewInit() {
-        console.log('after view init');
     }
 
     async loadChat() {
@@ -52,15 +46,11 @@ export class ChatComponent implements OnChanges {
             this.messages = this.chatService.getMessages(this.chatId);
             this.message.nativeElement.focus();
         }
-        console.log('chat load end');
         this.scrollToBottom();
         this.isSpinnerVisible = false;
     }
 
     scrollToBottom() {
-        console.log('scrolltobottom called');
-        // this.messageContainer.nativeElement.scrollTop =
-        //     this.messageContainer.nativeElement.scrollHeight;
         setTimeout(() => {
             document.getElementsByClassName('messages')[0].scrollTop =
                 document.getElementsByClassName('messages')[0].scrollHeight;

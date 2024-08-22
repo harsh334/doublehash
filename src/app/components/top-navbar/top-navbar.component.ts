@@ -14,10 +14,13 @@ export class TopNavbarComponent {
     filteredUsers: any[] = [];
     defaultUserImage: any = Constants.userImage;
     isMenuOpen: boolean = false;
+
     constructor(private sharedService: SharedService, private route: Router) {}
+
     ngOnInit() {
         this.searchForm = new FormGroup({ searchText: new FormControl('') });
     }
+
     search() {
         const searchedText = this.searchForm
             .get('searchText')
@@ -35,12 +38,15 @@ export class TopNavbarComponent {
             this.filteredUsers = filteredUsers;
         });
     }
+
     clearFilteredUsers() {
         this.filteredUsers = [];
     }
+
     toggleMenu() {
         this.isMenuOpen = !this.isMenuOpen;
     }
+
     closeMenu() {
         this.isMenuOpen = false;
     }

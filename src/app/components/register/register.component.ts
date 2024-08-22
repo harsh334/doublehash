@@ -16,11 +16,13 @@ export class RegisterComponent {
     selectedImage!: File;
     base64Image!: string;
     registerForm!: FormGroup;
+
     constructor(
         private registrationService: RegistrationService,
         private toasterService: ToasterService,
         private route: Router
     ) {}
+
     ngOnInit() {
         this.registerForm = new FormGroup({
             userEmail: new FormControl('', [
@@ -44,6 +46,7 @@ export class RegisterComponent {
             ]),
         });
     }
+
     get userEmail() {
         return this.registerForm.get('userEmail');
     }
@@ -62,6 +65,7 @@ export class RegisterComponent {
     get profileImage() {
         return this.registerForm.get('profileImage');
     }
+
     showImageUploadForm() {
         this.showImageUploadOption = !this.showImageUploadOption;
     }
@@ -105,6 +109,7 @@ export class RegisterComponent {
             }
         });
     }
+
     redirectToLoginPage() {
         this.route.navigateByUrl('/login');
     }

@@ -166,25 +166,28 @@
   top:50%;
   left:49%;
 }
+
 .logout{
   position: absolute;
   top:5px;
   right:5px;
-
 }
 
 @media only screen and (max-width: 425px){
   .container{
     width: 90%;
   }
+
   .profile{
     position: relative;
   }
+
 	.edit-and-share-profile{
     position: absolute;
     display: flex;
     right: 0;
   }
+
   .logout{
     display: block;
     position: absolute;
@@ -195,12 +198,15 @@
     font-size: 10px;
     margin:auto;
   }
+
   h4{
     margin-top: 60px;
   }
+
   .images img{
     width:auto
   }
+
   .box{
     width: 90%;
   }
@@ -209,15 +215,19 @@
   .container{
     width: 90vw;
   }
+
   .profile{
     position: relative;
   }
+
   .images img{
     width: auto;
   }
+
   .gallery {
       grid-template-columns: repeat(2, 1fr);
   }
+
   .box{
     width: 90%;
   }
@@ -227,6 +237,7 @@
   .gallery {
       grid-template-columns: repeat(3, 1fr);
   }
+  
   .images img{
     width: 100%;
     height: auto;

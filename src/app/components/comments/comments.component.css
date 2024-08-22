@@ -28,10 +28,12 @@
   align-items: center;
   margin-bottom: 10px;
 }
+
 .comments{
   height: 275px;
   overflow-y: scroll;
 }
+
 .close-btn{
   border: none;
   background-color: transparent;
@@ -41,6 +43,7 @@
 .add-comments{
   text-align: center;
 }
+
 .add-comments input{
   width: 80%;
   border-radius: 15px;
@@ -48,6 +51,7 @@
   padding: 0 10px;
   border: 2px solid #5bb5ff82;
 }
+
 .comment-btn{
   border: none;
   width: 40px;
@@ -56,6 +60,7 @@
   border-radius: 50%;
   background-color: #3700fd;
 }
+
 .disabled-btn{
   border: none;
   width: 40px;
@@ -64,11 +69,13 @@
   border-radius: 50%;
   background-color: #8e77e4;
 }
+
 .spinner{
   position: absolute;
   top:50%;
   left:49%;
 }
+
 @media  (max-width: 480px){
 	.comment-box{
 		width:90%;

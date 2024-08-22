@@ -6,11 +6,13 @@
     margin: 10% auto;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
+
 .form-container .form-horizontal{
     background-color: #f3e2e2;  /*it was white*/
     padding: 30px 30px 10px;
     border: 1px solid #e7e7e7;
 }
+
 .form-container .form-horizontal:before,
 .form-container .form-horizontal:after{
     content: '';
@@ -24,6 +26,7 @@
     top: 0;
     z-index: -1;
 }
+
 .form-container .form-horizontal:after{ transform: rotate(-3deg); }
 .form-container .title{
     color: #777;
@@ -35,6 +38,7 @@
     padding: 2px;
     margin: 0 0 20px 0;
 }
+
 .form-horizontal .form-group{
     background-color: #eaeaea;
     font-size: 0;
@@ -42,6 +46,7 @@
     border: 1px solid #d1d1d1;
     border-radius: 3px;
 }
+
 .form-horizontal .input-icon{
     color: #888;
     font-size: 18px;
@@ -52,6 +57,7 @@
     vertical-align: top;
     display: inline-block;
 }
+
 .form-horizontal .form-control{
     color: #555;
     background-color: transparent;
@@ -66,10 +72,12 @@
     display: inline-block;
     transition: all 0.3s;
 }
+
 .form-horizontal .form-control:focus{
     box-shadow: none;
     border: none;
 }
+
 .form-horizontal .form-control::placeholder{
     color: rgba(0,0,0,0.7);
     font-size: 14px;
@@ -83,16 +91,19 @@
     display: inline-block;
     vertical-align: top;
 }
+
 .form-horizontal .forgot-pass a,
 .form-horizontal .register a{
     color: #999;
     transition: all 0.3s ease;
 }
+
 .form-horizontal .forgot-pass a:hover,
 .form-horizontal .register a:hover{
     color: #555;
     text-decoration: underline;
 }
+
 .form-horizontal .register{
     font-size: 12px;
     text-align: center;
@@ -100,12 +111,15 @@
     border-top: 1px solid #e7e7e7;
     display: block;
 }
+
 .terms{
     text-align: center;
 }
+
 .red{
     color: red;
 }
+
 #prevBtn,#nextBtn{
     border: none;
     margin:0 10px;
@@ -114,6 +128,7 @@
     width: 30px;
     border-radius: 50%;
 }
+
 .btn{
     color: #fff;
     background: linear-gradient(#1dd1a1,#10ac84);
@@ -128,7 +143,6 @@
     transition: all 0.3s ease;
 }
 
-
 @media (max-width:1024px){
     .form-container{
         width: 80%;
@@ -136,6 +150,7 @@
         margin-top: 50%;
     }
 }
+
 @media (min-width:481px) and (max-width:768px){
     .form-container{
         width: 80%;
@@ -143,6 +158,7 @@
         margin-top: 55%;
     }
 }
+
 @media (max-width:480px){
     .form-container{
         width: 90%;

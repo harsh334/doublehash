@@ -1,117 +1,146 @@
 
 .container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-  .profile {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
+.profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
 
-  .profile img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 20px;
-  }
+.profile img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
 
-  .profile-details {
-    flex: 1;
-  }
+.profile-details {
+  flex: 1;
+}
 
-  .profile h1 {
-    font-size: 24px;
-    margin: 5px 0;
-  }
+.profile h1 {
+  font-size: 24px;
+  margin: 5px 0;
+}
 
-  .profile p {
-    font-size: 16px;
-    margin: 5px 0;
-  }
+.profile p {
+  font-size: 16px;
+  margin: 5px 0;
+}
 
-  .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 10px;
-  }
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
 
-  .images img {
-    width: 240px;
-    height: 200px;
-    aspect-ratio: 3 / 2;
-    object-fit: contain;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: transform 0.2s;
-  }
+.images img {
+  width: 240px;
+  height: 200px;
+  aspect-ratio: 3 / 2;
+  object-fit: contain;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
 
-  .images img:hover {
-    transform: scale(1.05);
-  }
+.images img:hover {
+  transform: scale(1.05);
+}
 
-  .box-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
+.box-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.single-post{
+  position: relative;
+}
+
+.single-post button{
+  position: absolute;
+  z-index: 2;
+  top: 10px;
+  right: 10px;
+}
+
+.single-post .main{
+  top:0 !important
+}
+
+.close-btn{
+  border: none;
+  background-color: transparent;
+  font-size: 25px;
+}
+
+.profile-button {
+  margin:10px 15px 0 0;
+  background-color: #FCFCFD;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #36395A;
+  height: 40px;
+  padding: 0 16px;
+  position: relative;
+  transition: box-shadow .15s,transform .15s;
+  will-change: box-shadow,transform;
+}
+
+.profile-button:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.profile-button:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.profile-button:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+.spinner{
+  position: absolute;
+  top:50%;
+  left:49%;
+}
+@media (max-width:780px){
+  .container{
+    width: 90%;
+  }
+  .images img{
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
   }
-
-  .single-post{
-    position: relative;
-  }
+}
+@media (min-width: 768px) {
   
-  .single-post button{
-    position: absolute;
-    z-index: 2;
-    top: 10px;
-    right: 10px;
+  .gallery {
+      grid-template-columns: repeat(2, 1fr);
   }
-  
-  .single-post .main{
-    top:0 !important
-  }
+}
 
-  .close-btn{
-    border: none;
-    background-color: transparent;
-    font-size: 25px;
+@media (min-width: 1024px) {
+  .gallery {
+      grid-template-columns: repeat(3, 1fr);
   }
-
-  .spinner{
-    position: absolute;
-    top:50%;
-    left:49%;
-  }
-  @media (max-width:780px){
-    .container{
-      width: 90%;
-    }
-    .images img{
-      width: 100%;
-    }
-  }
-  @media (min-width: 768px) {
-    
-    .gallery {
-        grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .gallery {
-        grid-template-columns: repeat(3, 1fr);
-    }
-  }
+}

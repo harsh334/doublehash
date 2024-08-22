@@ -19,13 +19,16 @@
    background-color: transparent;
    font-size: 25px;
 }
+
 .profile-header,.profile{
    width: 70%;
    margin: auto;
 }
+
 .profile .change-button{
    width: 100%;
 }
+
 .change-button{
    margin:10px 15px 0 0;
    background-color: f3f3f3;

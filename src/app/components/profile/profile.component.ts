@@ -24,12 +24,14 @@ export class ProfileComponent {
     base64Image!: any;
     isSpinnerVisible: boolean = true;
     private changeInUserDetailsSubscription!: Subscription;
+
     constructor(
         private sharedService: SharedService,
         private authService: AuthService,
         private toasterService: ToasterService,
         private route: Router
     ) {}
+
     ngOnInit() {
         this.loggedInUser = this.sharedService.getLoggedInUser();
         for (let i = 1; i <= this.loggedInUser.posts.length - 1; i++) {
@@ -137,9 +139,11 @@ export class ProfileComponent {
         this.selectedPost = { ...this.loggedInUser, ...post };
         this.isPostVisible = true;
     }
+
     hidePost() {
         this.isPostVisible = false;
     }
+
     logout() {
         let isUserLoggedIn = this.authService.logout();
         if (!isUserLoggedIn) {

@@ -11,7 +11,6 @@ import { MainPageComponent } from './components/main-page/main-page.component';
 import { SinglePostComponent } from './components/single-post/single-post.component';
 import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { SideNavbarComponent } from './components/side-navbar/side-navbar.component';
 import { BottomNavbarComponent } from './components/bottom-navbar/bottom-navbar.component';
 import { TopNavbarComponent } from './components/top-navbar/top-navbar.component';
 import { PostsComponent } from './components/posts/posts.component';
@@ -35,7 +34,6 @@ import { AboutComponent } from './components/about/about.component';
         RegisterComponent,
         MainPageComponent,
         SinglePostComponent,
-        SideNavbarComponent,
         BottomNavbarComponent,
         TopNavbarComponent,
         PostsComponent,

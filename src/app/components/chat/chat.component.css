@@ -4,8 +4,8 @@
   height: 100%;
   border: 1px solid #ddd;
   padding: 10px;
-  position: absolute; /*added now*/
-  width: 100%;  /*added now*/
+  position: absolute;
+  width: 100%;
 }
 
 .chat-header {
@@ -86,46 +86,10 @@
   font-size: 1.2em;
   color: #666;
 }
+
 .profile-image{
   height: 40px;
   aspect-ratio: 2/2;
   border-radius: 50%;
   margin-right: 10px;
-}
-@media (max-width: 480px ){
-  /* .messages{
-    height: 66vh;
-  } */
-}
-@media (max-width:767px){
-  /* .chat-window{
-        display: flex;
-        flex-direction: column;
-        border: 1px solid #ddd;
-        padding: 10px;
-  } */
-  /* .chat-header{
-    position: absolute;
-    top: 25px;
-    width: 80%;
-  } */
-  /* .messages{
-    position: absolute;
-    height: auto;
-    width: 80%;
-    top: 75px;
-    bottom: 100px;
-    margin-bottom: 10px;
-    background: steelblue;
-  } */
-  /* .form{
-    position: absolute;
-    bottom: 50px;
-    width: 80%;
-  } */
-}
-@media (min-width:768px) and (max-width:1024px){
-  /* .messages{
-    height: 77vh;
-  } */
 }

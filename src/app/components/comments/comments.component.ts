@@ -29,6 +29,7 @@ export class CommentsComponent {
             commentText: new FormControl(),
         });
     }
+
     ngAfterViewInit() {
         this.commentBox.nativeElement.focus();
     }

@@ -24,6 +24,7 @@ export class SecurityComponent {
         private authService: AuthService,
         private route: Router
     ) {}
+
     ngOnInit() {
         this.toasterService.showWarning(Constants.logoutWarning);
         this.loggedInUser = this.sharedService.getLoggedInUser();
@@ -36,6 +37,7 @@ export class SecurityComponent {
             ]),
         });
     }
+
     editProfile(userId: string, formData: any) {
         console.log(formData);
         if (formData.oldPassword === this.loggedInUser.password) {
@@ -66,6 +68,7 @@ export class SecurityComponent {
     hideEditForm() {
         this.isEditProfileFormVisible = false;
     }
+
     redirectToLogin() {
         this.route.navigateByUrl('/login');
     }

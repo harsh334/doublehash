@@ -16,10 +16,12 @@ export class PostComponent {
     postForm!: FormGroup;
     loggedInUser!: any;
     imagePreview: boolean = false;
+
     constructor(
         private sharedService: SharedService,
         private toasterService: ToasterService
     ) {}
+
     ngOnInit() {
         this.getLoggedInUser();
         this.postForm = new FormGroup({

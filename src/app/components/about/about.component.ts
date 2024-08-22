@@ -15,6 +15,7 @@ export class AboutComponent {
         private toasterService: ToasterService,
         private route: Router
     ) {}
+
     redirectToLogin() {
         if (this.authService.isUserAuthenticated() !== null) {
             this.toasterService.showSuccess(Constants.alreadyLoggedIn);

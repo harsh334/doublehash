@@ -17,6 +17,7 @@ export class LoginComponent {
     usersList: string[] = [];
     invalidCredentialMessage: string = Constants.invalidCredentialMessage;
     showInvalidCredentialMessage: boolean = false;
+
     constructor(
         private authService: AuthService,
         private sharedService: SharedService,
@@ -24,6 +25,7 @@ export class LoginComponent {
         private toasterService: ToasterService,
         private route: Router
     ) {}
+
     ngOnInit() {
         this.loginForm = new FormGroup({
             userEmail: new FormControl('', [
@@ -38,9 +40,11 @@ export class LoginComponent {
         });
         this.getUsers();
     }
+
     get userEmail() {
         return this.loginForm.get('userEmail');
     }
+
     get password() {
         return this.loginForm.get('password');
     }
@@ -51,7 +55,8 @@ export class LoginComponent {
             this.usersList = users;
         });
     }
-    Login(formDetails: any) {
+
+    login(formDetails: any) {
         let userEmail = formDetails.userEmail;
         let password = formDetails.password;
         this.usersList.forEach((user: any) => {
@@ -70,9 +75,11 @@ export class LoginComponent {
             }
         });
     }
+
     redirectToRegistrationPage() {
         this.route.navigateByUrl('/register');
     }
+
     redirectToProfilePage() {
         this.route.navigateByUrl('/profile');
     }

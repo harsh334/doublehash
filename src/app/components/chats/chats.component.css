@@ -2,16 +2,18 @@
 body{
    overflow: hidden;
 }
+
 .search-icon{
    display: none;
 }
+
 .chat-app-container {
    position: absolute;
-    padding: 30px 30px 50px 30px;
-    min-height: -webkit-fill-available; 
-    display: flex;
-    background: aqua;
-    width: 100%;
+   padding: 30px 30px 50px 30px;
+   min-height: -webkit-fill-available; 
+   display: flex;
+   background: aqua;
+   width: 100%;
 }
 
 .user-list-container {
@@ -27,16 +29,21 @@ body{
    flex-direction: column;
    position: relative ;   /*added now*/
 }
+
 @media (max-width:480px){
+
    .user-list-container{
       width: 0%;
    }
+
    .chat-container{
       width: 100%;
    }
+
    .search-icon{
       display: block;
    }
+
    .width-0{
       width: 0%;
    }
@@ -44,9 +51,11 @@ body{
    .width-100{
       width: 100%;
    }
+
    .display{
       display: block;
    }
+   
    .not-display{
       display: none;
    }
