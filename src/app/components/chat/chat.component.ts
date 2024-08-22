@@ -4,6 +4,7 @@ import {
     OnChanges,
     ViewChild,
     ElementRef,
+    ChangeDetectorRef,
 } from '@angular/core';
 import { ChatService } from 'src/app/services/chat.service';
 import { Observable } from 'rxjs';
@@ -18,6 +19,7 @@ import { Router } from '@angular/router';
 export class ChatComponent implements OnChanges {
     @Input() selectedUser: any;
     @ViewChild('message') message!: ElementRef;
+    @ViewChild('messageContainer') messageContainer!: ElementRef;
     messages!: Observable<any[]>;
     newMessage: string = '';
     chatId: string = '';
@@ -30,15 +32,19 @@ export class ChatComponent implements OnChanges {
     ) {}
 
     ngOnChanges() {
+        console.log('on chnage');
+
         if (this.selectedUser) {
             this.loadChat();
         }
     }
 
+    ngAfterViewInit() {
+        console.log('after view init');
+    }
+
     async loadChat() {
         this.isSpinnerVisible = true;
-        console.log('chat load start');
-
         if (this.selectedUser) {
             this.chatId = await this.chatService.getOrCreateChat(
                 this.selectedUser.key
@@ -47,7 +53,18 @@ export class ChatComponent implements OnChanges {
             this.message.nativeElement.focus();
         }
         console.log('chat load end');
+        this.scrollToBottom();
         this.isSpinnerVisible = false;
+    }
+
+    scrollToBottom() {
+        console.log('scrolltobottom called');
+        // this.messageContainer.nativeElement.scrollTop =
+        //     this.messageContainer.nativeElement.scrollHeight;
+        setTimeout(() => {
+            document.getElementsByClassName('messages')[0].scrollTop =
+                document.getElementsByClassName('messages')[0].scrollHeight;
+        }, 1000);
     }
 
     sendMessage() {
@@ -58,6 +75,7 @@ export class ChatComponent implements OnChanges {
                     this.newMessage = '';
                 });
         }
+        this.scrollToBottom();
     }
 
     messageContainsOthersProfileLink(message: string) {
@@ -67,6 +85,7 @@ export class ChatComponent implements OnChanges {
     messageContainsPostLink(message: string) {
         return message.startsWith('/post/');
     }
+
     redirectToPost(message: string) {
         let userId = message.split('/')[2];
         let postId = message.split('/')[3];
