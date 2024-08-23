@@ -17,7 +17,7 @@ export class AboutComponent {
     ) {}
 
     redirectToLogin() {
-        if (this.authService.isUserAuthenticated() !== null) {
+        if (this.authService.isUserAuthenticated()) {
             this.toasterService.showSuccess(Constants.alreadyLoggedIn);
             this.route.navigateByUrl('/posts');
         } else {
