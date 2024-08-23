@@ -4,7 +4,7 @@
             <div class="register-form">
                 <div class="form-container">
                     <form
-                        class="form-horizontal"
+                        class="form"
                         [formGroup]="registerForm"
                         (ngSubmit)="submitRegisterForm(registerForm.value)"
                     >
@@ -23,7 +23,7 @@
                                 />
                             </div>
                             <div
-                                class="red"
+                                class="text-danger"
                                 *ngIf="
                                     userEmail &&
                                     userEmail.invalid &&
@@ -49,7 +49,7 @@
                                 />
                             </div>
                             <div
-                                class="red"
+                                class="text-danger"
                                 *ngIf="
                                     fullName &&
                                     fullName.invalid &&
@@ -93,7 +93,7 @@
                                 />
                             </div>
                             <div
-                                class="red"
+                                class="text-danger"
                                 *ngIf="
                                     password &&
                                     password.invalid &&
@@ -137,7 +137,7 @@
                             />
                         </div>
                         <div
-                            class="red"
+                            class="text-danger"
                             *ngIf="
                                 profileImage &&
                                 profileImage.invalid &&
@@ -171,7 +171,7 @@
                             </div>
                         </div>
                         <button
-                            type="button"
+                            class="navigation-button"
                             id="prevBtn"
                             (click)="showImageUploadForm()"
                             [disabled]="!showImageUploadOption"
@@ -180,7 +180,7 @@
                             </i>
                         </button>
                         <button
-                            type="button"
+                            class="navigation-button"
                             id="nextBtn"
                             (click)="showImageUploadForm()"
                             [disabled]="showImageUploadOption"

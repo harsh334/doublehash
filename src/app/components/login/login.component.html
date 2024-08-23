@@ -4,7 +4,7 @@
             <div class="login-form">
                 <div class="form-container" style="margin-bottom: 40px">
                     <form
-                        class="form-horizontal"
+                        class="form"
                         [formGroup]="loginForm"
                         (ngSubmit)="login(loginForm.value)"
                     >
@@ -21,7 +21,7 @@
                             />
                         </div>
                         <div
-                            class="red"
+                            class="text-danger"
                             *ngIf="
                                 userEmail &&
                                 userEmail.invalid &&
@@ -48,7 +48,7 @@
                             />
                         </div>
                         <div
-                            class="red"
+                            class="text-danger"
                             *ngIf="
                                 password &&
                                 password.invalid &&
