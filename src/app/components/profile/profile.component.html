@@ -27,6 +27,13 @@
                 >
                     Share Profile
                 </button>
+                <button
+                    class="profile-button"
+                    role="button"
+                    (click)="activateDeletePostButton()"
+                >
+                    {{ isDeleteButtonActive ? "Cancel Delete" : "Delete Post" }}
+                </button>
             </div>
         </div>
         <button class="logout btn profile-button" (click)="logout()">
@@ -46,7 +53,15 @@
                 alt="Image"
                 (click)="showPost(post)"
             />
+            <button
+                *ngIf="isDeleteButtonActive"
+                class="delete-button"
+                (click)="deletePost(post.key)"
+            >
+                <i class="fa fa-trash fa-2x" aria-hidden="true"></i>
+            </button>
         </div>
+        <p *ngIf="posts.length === 0">No posts yet</p>
     </div>
 </div>
 
@@ -101,7 +116,7 @@
                     <button
                         [disabled]="!editProfileForm.valid"
                         type="submit"
-                        class="btn btn-primary mt-2"
+                        class="profile-button mt-2"
                     >
                         Submit
                     </button>

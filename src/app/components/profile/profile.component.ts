@@ -22,7 +22,8 @@ export class ProfileComponent {
     editProfileForm!: FormGroup;
     selectedImage!: any;
     base64Image!: any;
-    isSpinnerVisible: boolean = true;
+    isSpinnerVisible: boolean = false;
+    isDeleteButtonActive: boolean = false;
     private changeInUserDetailsSubscription!: Subscription;
 
     constructor(
@@ -40,6 +41,10 @@ export class ProfileComponent {
         this.changeInUserDetailsSubscription =
             this.sharedService.changeInUserDetails$.subscribe(() => {
                 this.loggedInUser = this.sharedService.getLoggedInUser();
+                this.posts = [];
+                for (let i = 1; i <= this.loggedInUser.posts.length - 1; i++) {
+                    this.getPostByPostID(this.loggedInUser.posts[i]);
+                }
             });
         this.editProfileForm = new FormGroup({
             profileImage: new FormControl(),
@@ -54,6 +59,7 @@ export class ProfileComponent {
     }
 
     getPostByPostID(postID: string): void {
+        this.isSpinnerVisible = true;
         this.sharedService.getPostByPostID(postID).subscribe(
             (post: any) => {
                 post.key = postID;
@@ -133,6 +139,28 @@ export class ProfileComponent {
         document.execCommand('copy');
         document.body.removeChild(textarea);
         this.toasterService.showSuccess(Constants.LinkCopied);
+    }
+
+    activateDeletePostButton() {
+        this.isDeleteButtonActive = !this.isDeleteButtonActive;
+    }
+
+    deletePost(postId: string) {
+        this.sharedService
+            .deletePostInUserDetails(postId)
+            .subscribe((result: any) => {
+                let updatedUserDetail = {
+                    ...this.loggedInUser,
+                };
+                updatedUserDetail.posts = result.posts;
+                this.sharedService.updateUserDetailsInLocalStorage(
+                    updatedUserDetail
+                );
+                this.sharedService.deletePostInPosts(postId).subscribe();
+                this.toasterService.showSuccess(Constants.successfulPostDelete);
+                this.sharedService.changeInUserDetails$.next();
+            });
+        this.isDeleteButtonActive = false;
     }
 
     showPost(post: any) {

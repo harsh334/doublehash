@@ -40,7 +40,6 @@ export class SharedService {
     }
 
     addPostInUserDetails(postID: string) {
-        //console.log('addPostInUserDetails', localStorage.getItem('user'));
         let userDetails: any = {};
         userDetails = this.getLoggedInUser();
         userDetails.posts.push(postID);
@@ -49,9 +48,26 @@ export class SharedService {
                 Constants.firebaseUrl + 'Users/' + userDetails.key + '.json',
                 { posts: [...userDetails.posts] }
             )
-            .subscribe((result) => {
-                //console.log('isUserUpdated', result);
-            });
+            .subscribe();
+    }
+
+    deletePostInUserDetails(postID: string) {
+        let userDetails: any = {};
+        userDetails = this.getLoggedInUser();
+        let index = userDetails.posts.indexOf(postID);
+        if (index !== -1) {
+            userDetails.posts.splice(index, 1);
+        }
+        return this.http.patch(
+            Constants.firebaseUrl + 'Users/' + userDetails.key + '.json',
+            { posts: [...userDetails.posts] }
+        );
+    }
+
+    deletePostInPosts(postId: string) {
+        return this.http.delete(
+            Constants.firebaseUrl + 'Post/' + postId + '.json'
+        );
     }
 
     getPosts(lastKey: string | null, limit: number) {
@@ -82,8 +98,6 @@ export class SharedService {
     }
 
     getComments(postID: string) {
-        console.log('inside getComments', postID);
-
         return this.http.get(
             Constants.firebaseUrl + 'Post/' + postID + '.json'
         );
@@ -109,8 +123,6 @@ export class SharedService {
     }
 
     editProfile(userId: string, editedProfileDetails: any) {
-        console.log('in ss', userId, editedProfileDetails);
-
         return this.http.patch(
             Constants.firebaseUrl + 'Users/' + userId + '.json',
             editedProfileDetails
