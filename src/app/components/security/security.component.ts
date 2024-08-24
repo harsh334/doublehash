@@ -39,7 +39,6 @@ export class SecurityComponent {
     }
 
     editProfile(userId: string, formData: any) {
-        console.log(formData);
         if (formData.oldPassword === this.loggedInUser.password) {
             this.sharedService
                 .editProfile(userId, {

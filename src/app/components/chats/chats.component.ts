@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class ChatsComponent {
     selectedUser: any;
-    isSearchVisible = false;
+    isSearchVisible = true;
 
     onUserSelected(user: any) {
         this.selectedUser = user;

@@ -93,7 +93,6 @@ export class RegisterComponent {
                 ctx?.drawImage(img, 0, 0);
                 const base64Image = canvas.toDataURL('image/jpeg', 0.5);
                 this.base64Image = base64Image;
-                console.log(this.base64Image);
             };
         };
     }

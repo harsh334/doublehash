@@ -23,7 +23,15 @@
         </div>
 
         <div class="post">
-            <img class="not" alt="post" src="{{ stPost.imageLink }}" />
+            <div *ngIf="isHeartAfterLikeVisible" class="heart-after-like">
+                <i class="fa fa-heart fa-3x fa-bounce" aria-hidden="true"></i>
+            </div>
+            <img
+                class="not"
+                (dblclick)="like(stPost)"
+                alt="post"
+                src="{{ stPost.imageLink }}"
+            />
             <div class="like-and-comment">
                 <div class="iconsec">
                     <div class="left">

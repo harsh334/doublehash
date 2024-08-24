@@ -71,6 +71,7 @@
 
 .single-post{
   position: relative;
+  animation: boxOpen 0.8s ease-in-out;
 }
 
 .single-post button{
@@ -124,6 +125,16 @@
   top:50%;
   left:49%;
 }
+
+@keyframes boxOpen {
+	0% {
+		 transform: scale(0.1);
+	}
+	50% {
+		 transform: scale(1);
+	}
+}
+
 @media (max-width:780px){
   .container{
     width: 90%;
@@ -132,8 +143,8 @@
     width: 100%;
   }
 }
+
 @media (min-width: 768px) {
-  
   .gallery {
       grid-template-columns: repeat(2, 1fr);
   }

@@ -28,7 +28,6 @@ export class TopNavbarComponent {
 
         this.sharedService.getUsers().subscribe((users: any[]) => {
             const filteredUsers = users.filter((userDetail: any) => {
-                console.log('searchedText', userDetail.userName.toLowerCase());
                 return (
                     userDetail.userName.toLowerCase().includes(searchedText) ||
                     userDetail.userEmail.toLowerCase().includes(searchedText) ||

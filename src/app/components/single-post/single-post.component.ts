@@ -20,6 +20,8 @@ export class SinglePostComponent {
     isAlreadyLiked: boolean = false;
     userWhoLikedThePost: any[] = [];
     isWhoLikedVisible: boolean = false;
+    isHeartAfterLikeVisible: boolean = false;
+
     constructor(
         private sharedService: SharedService,
         private toasterService: ToasterService,
@@ -27,7 +29,6 @@ export class SinglePostComponent {
     ) {}
     ngOnInit() {
         this.getLoggedInUser();
-        console.log('stpost', this.stPost);
         this.isAlreadyLiked = this.checkIfAlreadyLiked(this.stPost.likes);
         this.sharedService
             .getUserByID(this.stPost.userID)
@@ -61,6 +62,7 @@ export class SinglePostComponent {
     }
 
     like(post: any) {
+        this.isHeartAfterLikeVisible = true;
         let likes = post.likes;
         this.isAlreadyLiked = this.checkIfAlreadyLiked(likes);
         if (this.isAlreadyLiked) {
@@ -78,6 +80,7 @@ export class SinglePostComponent {
                     post.likes = result['likes'];
                     this.noOfLikesUpdated.emit(post);
                 }
+                this.isHeartAfterLikeVisible = false;
             });
     }
 
@@ -99,6 +102,7 @@ export class SinglePostComponent {
                 });
         }
     }
+
     closeLikeBox() {
         this.isWhoLikedVisible = false;
         this.userWhoLikedThePost = [];

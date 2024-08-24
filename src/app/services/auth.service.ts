@@ -28,10 +28,6 @@ export class AuthService {
     }
 
     isUserAuthenticated() {
-        console.log(
-            "localStorage.getItem('user')",
-            localStorage.getItem('user')
-        );
         return localStorage.getItem('user') !== null;
     }
 }
