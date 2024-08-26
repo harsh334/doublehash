@@ -1,5 +1,6 @@
 export const Constants = {
-    firebaseUrl: 'https://doublehash-e86c1-default-rtdb.firebaseio.com/',
+    // firebaseUrl: 'https://doublehash-e86c1-default-rtdb.firebaseio.com/',
+    firebaseUrl: 'https://doublehash-e9828-default-rtdb.firebaseio.com/',
     invalidCredentialMessage: 'Invalid credential, please try again !!',
     passwordChangeSuccessful: 'Password Changed Successfully !!',
     logoutWarning:

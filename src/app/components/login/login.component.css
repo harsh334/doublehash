@@ -101,6 +101,7 @@
 
 .form .register a{
     text-decoration: underline;
+    cursor: pointer;
 }
 
 @media (max-width:480px){
