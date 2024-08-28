@@ -19,6 +19,7 @@ import { GuestGuard } from './guards/guest-guard';
 
 const routes: Routes = [
     { path: '', component: AboutComponent },
+    { path: 'about', component: AboutComponent },
     {
         path: 'register',
         component: RegisterComponent,
