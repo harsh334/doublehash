@@ -104,7 +104,6 @@ export class SharedService {
     }
 
     likePost(postID: string, likesArray: number) {
-        let post: any = {};
         return this.http.patch(
             Constants.firebaseUrl + 'Post/' + postID + '.json',
             { likes: likesArray }

@@ -35,6 +35,30 @@
   overflow-y: scroll;
 }
 
+.comment{
+  display: flex;
+  align-items: center;
+  margin: 10px 5px;
+}
+
+.user-profile{
+  display: flex;
+  margin-right: 30px;
+  align-items: center;
+  color: #00000098;
+}
+
+.user-profile-image{
+	border-radius: 50%;
+	overflow: hidden;
+	margin-right: 5px;
+}
+
+.user-profile-image img{
+	height: 30px;
+	width: 30px;
+}
+
 .close-btn{
   border: none;
   background-color: transparent;

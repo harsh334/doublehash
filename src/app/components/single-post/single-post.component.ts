@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, output, Output } from '@angular/core';
 import { SharedService } from 'src/app/services/shared.service';
 import { Input } from '@angular/core';
 import { Router } from '@angular/router';
@@ -11,10 +11,9 @@ import { ToasterService } from 'src/app/services/toaster.service';
 })
 export class SinglePostComponent {
     @Input() stPost: any = '';
-    @Output() noOfLikesUpdated = new EventEmitter();
+    @Output() updateInComment = new EventEmitter();
     loggedInUser: any = '';
     comments: any[] = [];
-    noOfLikes: number = 0;
     isModalOpen = false;
     defaultUserImage: any = Constants.userImage;
     isAlreadyLiked: boolean = false;
@@ -27,6 +26,7 @@ export class SinglePostComponent {
         private toasterService: ToasterService,
         private route: Router
     ) {}
+
     ngOnInit() {
         this.getLoggedInUser();
         this.isAlreadyLiked = this.checkIfAlreadyLiked(this.stPost.likes);
@@ -78,7 +78,6 @@ export class SinglePostComponent {
                 if (result) {
                     this.isAlreadyLiked = !this.isAlreadyLiked;
                     post.likes = result['likes'];
-                    this.noOfLikesUpdated.emit(post);
                 }
                 this.isHeartAfterLikeVisible = false;
             });
@@ -106,6 +105,10 @@ export class SinglePostComponent {
     closeLikeBox() {
         this.isWhoLikedVisible = false;
         this.userWhoLikedThePost = [];
+    }
+
+    updateComment(updatedComment: any) {
+        this.stPost.comments.push(updatedComment);
     }
 
     sharePost(stPost: any) {

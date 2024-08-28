@@ -74,8 +74,9 @@
 <app-comments
     *ngIf="isModalOpen"
     [comment]="comments"
+    (updateInComment)="updateComment($event)"
     [postID]="stPost.key"
-    [userName]="loggedInUser.userName"
+    [userDetail]="loggedInUser"
     (closeModal)="closeModal()"
 ></app-comments>
 
