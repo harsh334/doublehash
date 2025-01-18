@@ -88,4 +88,8 @@ export class OthersProfileComponent {
     hidePost() {
         this.isPostVisible = false;
     }
+
+    addFriend() {
+        this.sharedService.addFriend(this.userId);
+    }
 }

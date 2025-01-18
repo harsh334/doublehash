@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Constants } from '../shared/constants';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable, Subject, map, max } from 'rxjs';
+import { user } from '@angular/fire/auth';
 
 @Injectable({
     providedIn: 'root',
@@ -173,5 +174,18 @@ export class SharedService {
         return diffInSeconds === 1
             ? `${diffInSeconds} second ago`
             : `${diffInSeconds} seconds ago`;
+    }
+
+    addFriend(friendUserId: string) {
+        console.log('userId in ss', friendUserId);
+        let loggedInUser = this.getLoggedInUser();
+        console.log('loggedInUser', loggedInUser);
+        loggedInUser.friends.push(friendUserId);
+        this.updateUserDetailsInLocalStorage(loggedInUser);
+        //return a patch method
+        // return this.http.patch(
+        //     Constants.firebaseUrl + 'Users/' + friendUserId + '.json',
+        //     editedProfileDetails
+        // );
     }
 }
